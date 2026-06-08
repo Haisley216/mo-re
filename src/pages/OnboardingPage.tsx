@@ -11,9 +11,6 @@ const TOTAL_DOTS = 7;
 const HOUSEHOLD_OPTIONS = ['1인 가구', '2인 가구', '3인 가구', '4인 가구', '5인 가구', '6인 가구'];
 const REGION_OPTIONS = ['서울', '경기', '광역·세종·창원', '그 외'];
 
-function parseAmount(s: string): number {
-  return parseInt(s.replace(/[^0-9]/g, ''), 10) || 0;
-}
 
 function formatAmount(n: number): string {
   if (n === 0) return '';

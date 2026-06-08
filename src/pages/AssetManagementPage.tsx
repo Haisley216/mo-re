@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StatusBar } from '../components/StatusBar';
 import { HomeIndicator } from '../components/HomeIndicator';
-import { BankIcon, BriefcaseIcon, ChevronLeftIcon, HamburgerIcon, HouseIcon, WonIcon } from '../components/Icons';
+import { BankIcon, ChevronLeftIcon, HamburgerIcon, HouseIcon, WonIcon } from '../components/Icons';
 import { formatCurrency, monthData, monthOrder, type MonthKey } from '../data/monthlyData';
 import { buildInitialRows, useIncomeAssets } from '../context/IncomeAssetsContext';
 import { useOnboarding } from '../context/OnboardingContext';
