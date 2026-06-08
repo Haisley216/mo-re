@@ -1,0 +1,268 @@
+/* ── Welcome screen (step 0) ─────────────────────────────────────────────── */
+.ob-welcome {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding-top: 127px; /* 180px from screen top − 53px StatusBar */
+}
+
+.ob-welcome__body {
+  padding: 0 35px;
+}
+
+.ob-welcome__title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 38px;
+  color: #121212;
+  margin-bottom: 25px;
+  white-space: pre-line;
+}
+
+.ob-welcome__sub {
+  font-size: 18px;
+  font-weight: 600;
+  color: #767676;
+  line-height: 28px;
+}
+
+.ob-welcome__cta {
+  margin-top: auto;
+  margin-bottom: 61px;
+  align-self: center;
+  width: 361px !important;
+  height: 58px !important;
+  border-radius: 6px !important;
+}
+
+/* Shared welcome button base */
+.ob-btn {
+  display: block;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.ob-btn--primary {
+  background: #eb374f;
+  color: #fff;
+}
+
+.ob-btn--primary:active {
+  opacity: 0.85;
+}
+
+/* ── Steps 1–9 container ─────────────────────────────────────────────────── */
+/* All children use absolute positioning relative to this container.
+   Content area height = 932 − 53 (StatusBar) − 34 (HomeIndicator) = 845px.
+   Figma positions are from screen top, so subtract 53px for content-relative y. */
+.ob-screen {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Title: Figma top 180px → 127px from content top ── */
+.ob-title {
+  position: absolute;
+  top: 127px;
+  left: 35px;
+  right: 35px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 38px;
+  color: #121212;
+  white-space: pre-line;
+}
+
+/* ── Subtitle: Figma top 243px → 190px ── */
+.ob-subtitle {
+  position: absolute;
+  top: 190px;
+  left: 35px;
+  right: 35px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #767676;
+  line-height: 28px;
+  white-space: pre-line;
+}
+
+/* ── Selection option buttons ── */
+/* First option: Figma top 252px → 199px. Gap between items: 10px */
+.ob-options {
+  position: absolute;
+  top: 199px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 361px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ob-option {
+  width: 100%;
+  height: 58px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border: none;
+  text-align: left;
+  padding-left: 27px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #121212;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+
+.ob-option--selected {
+  background: #eb374f;
+  color: #fff;
+}
+
+/* ── Text / number input ── */
+/* With subtitle: Figma top 348px → 295px */
+.ob-input {
+  position: absolute;
+  top: 295px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 361px;
+  height: 58px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border: none;
+  padding: 0 27px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #121212;
+  outline: none;
+}
+
+/* No subtitle (age): same top as options, Figma top 252px → 199px */
+.ob-input--no-sub {
+  top: 199px;
+}
+
+.ob-input::placeholder {
+  color: #acacac;
+}
+
+/* ── Step dots: Figma top 695px → 642px, centered ── */
+.ob-dots {
+  position: absolute;
+  top: 642px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.ob-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d4d4d4;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.ob-dot--active {
+  width: 10px;
+  height: 10px;
+  background: #eb374f;
+}
+
+/* ── CTA button: Figma top 779px → 726px, centered ── */
+.ob-cta {
+  position: absolute;
+  top: 726px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 361px;
+  height: 58px;
+  background: #eb374f;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.ob-cta:active {
+  opacity: 0.85;
+}
+
+/* Back button: Figma top 106px from screen top → 53px from ob-screen top, left 35px */
+.ob-back {
+  position: absolute;
+  top: 45px;
+  left: 27px;
+  padding: 8px;
+  line-height: 0;
+}
+
+/* Disabled CTA state */
+.ob-cta--disabled {
+  background: #d4d4d4;
+  cursor: not-allowed;
+}
+
+.ob-cta--disabled:active {
+  opacity: 1;
+}
+
+/* ── Loading screen ── */
+/* Loader: Figma top 289px → 236px, Figma left 200px (centered on 430px) */
+.ob-loader {
+  position: absolute;
+  top: 236px;
+  left: 200px;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f0f0f0;
+  border-top-color: #eb374f;
+  border-radius: 50%;
+  animation: ob-spin 0.8s linear infinite;
+}
+
+@keyframes ob-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Loading title: Figma top 398px → 345px, centered */
+.ob-loading-title {
+  position: absolute;
+  top: 345px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 38px;
+  color: #121212;
+  text-align: center;
+}
+
+/* Loading subtitle: Figma top 508px → 455px, centered */
+.ob-loading-sub {
+  position: absolute;
+  top: 455px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #767676;
+  line-height: 28px;
+  text-align: center;
+}

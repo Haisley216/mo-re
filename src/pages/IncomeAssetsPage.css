@@ -1,0 +1,357 @@
+.income-page {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 35px 40px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.income-page__header {
+  margin-top: 38px;
+  margin-bottom: 32px;
+}
+
+.income-page__back {
+  line-height: 0;
+  padding: 8px 8px 12px 0;
+  display: block;
+}
+
+.income-page__title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.income-page__subtitle {
+  font-size: 15px;
+  font-weight: 500;
+  color: #858585;
+  line-height: 1.4;
+}
+
+.income-page__section {
+  margin-bottom: 24px;
+}
+
+.income-page__section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.income-page__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 44px;
+  padding: 0 31px;
+  background: #f9f9f9;
+  border-radius: 7px;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  transition: background 0.15s;
+}
+
+.income-page__row:active {
+  background: #efefef;
+}
+
+.income-page__add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 71px;
+  height: 35px;
+  margin: 16px auto 0;
+  background: #feedf0;
+  border-radius: 7px;
+  transition: background 0.15s;
+}
+
+.income-page__add-btn:active {
+  background: #fdd8df;
+}
+
+/* ── Bottom Sheet ────────────────────────────────────────────────────────── */
+
+/* Semi-transparent backdrop covering the full phone frame */
+.bs-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Sheet panel — 361px wide, centered, above HomeIndicator (37px from bottom) */
+.bs {
+  position: absolute;
+  bottom: 37px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 361px;
+  max-height: 494px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  z-index: 11;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Drag handle */
+.bs__handle {
+  flex-shrink: 0;
+  width: 80px;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  margin: 18px auto 10px;
+}
+
+/* Scrollable content area */
+.bs__scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Section title ("소득", "금융 재산", "일반 재산") */
+.bs__section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  padding: 16px 37px;
+  line-height: normal;
+}
+
+/* Thin divider between sections */
+.bs__divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin-top: 14px;
+}
+
+/* Row button — taller when it has a description */
+.bs__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  text-align: left;
+  padding: 9px 37px;
+  min-height: 39px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.bs__item:active {
+  background: #f9f9f9;
+}
+
+.bs__item-label {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  line-height: normal;
+}
+
+.bs__item-desc {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: #767676;
+  line-height: 20px;
+  margin-top: 8px;
+}
+
+.bs__empty {
+  font-size: 15px;
+  color: #858585;
+  text-align: center;
+  padding: 32px 0;
+}
+
+/* ── Input bottom sheet (bs2) ────────────────────────────────────────────── */
+/* Add mode  : height ~321px (no note)  */
+/* Edit mode : height ~354px (with note) */
+
+.bs2 {
+  position: absolute;
+  bottom: 37px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 361px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+  z-index: 12;
+  padding-bottom: 40px;
+}
+
+/* Drag handle: mirrors .bs__handle */
+.bs2__handle {
+  width: 80px;
+  height: 4px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  margin: 18px auto 0;
+}
+
+/* Item title — Figma: top 36px from sheet top (22px handle + 14px gap) */
+.bs2__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  margin: 14px 37px 0;
+  line-height: normal;
+}
+
+/* Description — Figma: top 80px (36 + ~20px title + 24px gap) */
+.bs2__desc {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  line-height: 24px;
+  margin: 24px 37px 0;
+  width: 256px;
+  white-space: pre-line;
+}
+
+/* Note (edit only) — Figma: top 138px (desc ends ~128px + 10px gap) */
+.bs2__note {
+  font-size: 15px;
+  font-weight: 500;
+  color: #767676;
+  line-height: 20px;
+  margin: 10px 37px 0;
+  width: 287px;
+}
+
+/* Amount input field — Figma: top 148px (add) / top 181px (edit w/ note) */
+.bs2__field {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 6px;
+  height: 52px;
+  width: 287px;
+  margin: 20px 0 0 37px;
+  padding: 0 16px;
+}
+
+/* Push field down a little more when a note exists */
+.bs2--with-note .bs2__field {
+  margin-top: 23px;
+}
+
+.bs2__field-input {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #000;
+  outline: none;
+}
+
+.bs2__field-input::placeholder {
+  color: #acacac;
+  font-weight: 400;
+}
+
+.bs2__field-unit {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  flex-shrink: 0;
+  margin-left: 6px;
+}
+
+/* Single 완료 button (add mode) — 287px wide, left-aligned with field */
+.bs2__btn-single {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 287px;
+  height: 50px;
+  background: #eb374f;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  margin: 30px 0 0 37px;
+}
+
+.bs2__btn-single:active {
+  opacity: 0.85;
+}
+
+/* Dual button row (edit mode) */
+.bs2__actions {
+  display: flex;
+  gap: 13px;
+  width: 287px;
+  margin: 30px 0 0 37px;
+}
+
+/* 항목 삭제 (gray) */
+.bs2__btn-delete {
+  flex: 1;
+  height: 50px;
+  background: #bcbcbc;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.bs2__btn-delete:active {
+  opacity: 0.85;
+}
+
+/* 완료 (red) */
+.bs2__btn-confirm {
+  flex: 1;
+  height: 50px;
+  background: #eb374f;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.bs2__btn-confirm:active {
+  opacity: 0.85;
+}
+
+/* Disabled state for 완료 buttons */
+.bs2__btn-single.bs2__btn--disabled,
+.bs2__btn-confirm.bs2__btn--disabled {
+  background: #d4d4d4;
+  cursor: not-allowed;
+}
+
+.bs2__btn-single.bs2__btn--disabled:active,
+.bs2__btn-confirm.bs2__btn--disabled:active {
+  opacity: 1;
+}

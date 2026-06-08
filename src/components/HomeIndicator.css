@@ -1,0 +1,15 @@
+.home-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 34px;
+  flex-shrink: 0;
+}
+
+.home-indicator__bar {
+  width: 152px;
+  height: 5px;
+  background: #010101;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}

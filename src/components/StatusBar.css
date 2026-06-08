@@ -1,0 +1,21 @@
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 53px;
+  padding: 0 38px 0 103px;
+  flex-shrink: 0;
+}
+
+.status-bar__time {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.45px;
+  color: #010101;
+}
+
+.status-bar__icons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
