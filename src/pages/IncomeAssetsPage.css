@@ -92,7 +92,7 @@
   bottom: 37px;
   left: 50%;
   transform: translateX(-50%);
-  width: 361px;
+  width: min(361px, calc(100% - 28px));
   max-height: 494px;
   background: #fff;
   border-radius: 12px;
@@ -189,7 +189,7 @@
   bottom: 37px;
   left: 50%;
   transform: translateX(-50%);
-  width: 361px;
+  width: min(361px, calc(100% - 28px));
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);

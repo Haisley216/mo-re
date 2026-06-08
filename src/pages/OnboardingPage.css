@@ -4,8 +4,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  padding-top: 127px;
-  /* 180px from screen top − 53px StatusBar */
+  padding-top: 15%;
 }
 
 .ob-welcome__body {
@@ -32,7 +31,7 @@
   margin-top: auto;
   margin-bottom: 61px;
   align-self: center;
-  width: 361px !important;
+  width: min(361px, calc(100% - 70px)) !important;
   height: 58px !important;
   border-radius: 6px !important;
 }
@@ -66,10 +65,9 @@
   overflow: hidden;
 }
 
-/* ── Title: Figma top 180px → 127px from content top ── */
 .ob-title {
   position: absolute;
-  top: 127px;
+  top: 15%;
   left: 35px;
   right: 35px;
   font-size: 23px;
@@ -79,10 +77,9 @@
   white-space: pre-line;
 }
 
-/* ── Subtitle: Figma top 243px → 190px ── */
 .ob-subtitle {
   position: absolute;
-  top: 190px;
+  top: 22.5%;
   left: 35px;
   right: 35px;
   font-size: 18px;
@@ -92,14 +89,12 @@
   white-space: pre-line;
 }
 
-/* ── Selection option buttons ── */
-/* First option: Figma top 252px → 199px. Gap between items: 10px */
 .ob-options {
   position: absolute;
-  top: 199px;
+  top: 23.5%;
   left: 50%;
   transform: translateX(-50%);
-  width: 361px;
+  width: min(361px, calc(100% - 48px));
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -126,14 +121,12 @@
   color: #fff;
 }
 
-/* ── Text / number input ── */
-/* With subtitle: Figma top 348px → 295px */
 .ob-input {
   position: absolute;
-  top: 295px;
+  top: 35%;
   left: 50%;
   transform: translateX(-50%);
-  width: 361px;
+  width: min(361px, calc(100% - 48px));
   height: 58px;
   background: #f9f9f9;
   border-radius: 6px;
@@ -146,19 +139,17 @@
   outline: none;
 }
 
-/* No subtitle (age): same top as options, Figma top 252px → 199px */
 .ob-input--no-sub {
-  top: 199px;
+  top: 23.5%;
 }
 
 .ob-input::placeholder {
   color: #acacac;
 }
 
-/* ── Step dots: Figma top 695px → 642px, centered ── */
 .ob-dots {
   position: absolute;
-  top: 642px;
+  top: 76%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -181,13 +172,12 @@
   background: #eb374f;
 }
 
-/* ── CTA button: Figma top 779px → 726px, centered ── */
 .ob-cta {
   position: absolute;
-  top: 726px;
+  top: 86%;
   left: 50%;
   transform: translateX(-50%);
-  width: 361px;
+  width: min(361px, calc(100% - 48px));
   height: 58px;
   background: #eb374f;
   border-radius: 6px;
@@ -203,13 +193,12 @@
   opacity: 0.85;
 }
 
-/* ── Two-button CTA row (해당 없음 + 다음) ── */
 .ob-cta-row {
   position: absolute;
-  top: 726px;
+  top: 86%;
   left: 50%;
   transform: translateX(-50%);
-  width: 361px;
+  width: min(361px, calc(100% - 48px));
   display: flex;
   gap: 21px;
 }
@@ -252,10 +241,9 @@
   opacity: 1;
 }
 
-/* Back button: Figma top 106px from screen top → 53px from ob-screen top, left 35px */
 .ob-back {
   position: absolute;
-  top: 45px;
+  top: 5.3%;
   left: 27px;
   padding: 8px;
   line-height: 0;
@@ -271,12 +259,11 @@
   opacity: 1;
 }
 
-/* ── Loading screen ── */
-/* Loader: Figma top 289px → 236px, Figma left 200px (centered on 430px) */
 .ob-loader {
   position: absolute;
-  top: 236px;
-  left: 200px;
+  top: 28%;
+  left: 50%;
+  margin-left: -15px;
   width: 30px;
   height: 30px;
   border: 3px solid #f0f0f0;
@@ -291,13 +278,12 @@
   }
 }
 
-/* Loading title: Figma top 398px → 345px, centered */
 .ob-loading-title {
   position: absolute;
-  top: 345px;
+  top: 41%;
   left: 50%;
   transform: translateX(-50%);
-  width: 360px;
+  width: min(360px, calc(100% - 70px));
   font-size: 26px;
   font-weight: 700;
   line-height: 38px;
@@ -305,13 +291,12 @@
   text-align: center;
 }
 
-/* Loading subtitle: Figma top 508px → 455px, centered */
 .ob-loading-sub {
   position: absolute;
-  top: 455px;
+  top: 54%;
   left: 50%;
   transform: translateX(-50%);
-  width: 360px;
+  width: min(360px, calc(100% - 70px));
   font-size: 18px;
   font-weight: 500;
   color: #767676;
