@@ -61,7 +61,7 @@ export function PlusIcon() {
 export function ChevronLeftIcon() {
   return (
     <svg width="11" height="22" viewBox="0 0 11 22" fill="none" aria-hidden="true">
-      <path d="M9 2L2 11L9 20" stroke="#121212" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 2L2 11L9 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

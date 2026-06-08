@@ -266,7 +266,8 @@ export function OnboardingPage() {
   ];
 
   const current = INPUT_STEPS.find((s) => s.step === step)!;
-  const disabled = current.value === 0;
+  const nextDisabled = current.value === 0;
+  const nextLabel = step === 8 ? '완료' : '다음';
 
   return (
     <div className="phone-frame">
@@ -288,14 +289,23 @@ export function OnboardingPage() {
           autoFocus
         />
         <Dots activeIndex={current.dotIndex} />
-        <button
-          type="button"
-          className={`ob-cta${disabled ? ' ob-cta--disabled' : ''}`}
-          disabled={disabled}
-          onClick={() => setStep((s) => s + 1)}
-        >
-          {step === 8 ? '완료' : '다음'}
-        </button>
+        <div className="ob-cta-row">
+          <button
+            type="button"
+            className="ob-cta-row__skip"
+            onClick={() => { current.setter(0); setStep((s) => s + 1); }}
+          >
+            해당 없음
+          </button>
+          <button
+            type="button"
+            className={`ob-cta-row__next${nextDisabled ? ' ob-cta-row__next--disabled' : ''}`}
+            disabled={nextDisabled}
+            onClick={() => setStep((s) => s + 1)}
+          >
+            {nextLabel}
+          </button>
+        </div>
       </div>
       <HomeIndicator />
     </div>

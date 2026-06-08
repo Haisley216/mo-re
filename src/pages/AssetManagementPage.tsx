@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StatusBar } from '../components/StatusBar';
 import { HomeIndicator } from '../components/HomeIndicator';
-import { BankIcon, BriefcaseIcon, HamburgerIcon, HouseIcon, WonIcon } from '../components/Icons';
+import { BankIcon, BriefcaseIcon, ChevronLeftIcon, HamburgerIcon, HouseIcon, WonIcon } from '../components/Icons';
 import { formatCurrency, monthData, monthOrder, type MonthKey } from '../data/monthlyData';
 import { buildInitialRows, useIncomeAssets } from '../context/IncomeAssetsContext';
 import { useOnboarding } from '../context/OnboardingContext';
@@ -92,6 +92,7 @@ export function AssetManagementPage() {
             aria-label="메뉴 열기"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
+            disabled
           >
             <HamburgerIcon />
           </button>
@@ -154,7 +155,11 @@ export function AssetManagementPage() {
             className="asset-page__cta"
             onClick={() => navigate('/income-assets')}
           >
-            이번 달 소득 및 재산의 변화가 예상되시나요?
+            <span className="asset-page__cta-text">
+              <span>지난 달 소득인정액을 바탕으로 예상한 값이에요.</span>
+              <span>이번 달 소득 및 재산의 변화가 예상되시나요?</span>
+            </span>
+            <span className="asset-page__cta-arrow"><ChevronLeftIcon /></span>
           </button>
         </section>
 

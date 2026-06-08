@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
-  padding-top: 127px; /* 180px from screen top − 53px StatusBar */
+  padding-top: 127px;
+  /* 180px from screen top − 53px StatusBar */
 }
 
 .ob-welcome__body {
@@ -71,9 +72,9 @@
   top: 127px;
   left: 35px;
   right: 35px;
-  font-size: 26px;
+  font-size: 23px;
   font-weight: 700;
-  line-height: 38px;
+  line-height: 34px;
   color: #121212;
   white-space: pre-line;
 }
@@ -202,6 +203,55 @@
   opacity: 0.85;
 }
 
+/* ── Two-button CTA row (해당 없음 + 다음) ── */
+.ob-cta-row {
+  position: absolute;
+  top: 726px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 361px;
+  display: flex;
+  gap: 21px;
+}
+
+.ob-cta-row__skip,
+.ob-cta-row__next {
+  flex: 1;
+  height: 58px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.ob-cta-row__skip {
+  background: #bcbcbc;
+}
+
+.ob-cta-row__skip:active {
+  opacity: 0.85;
+}
+
+.ob-cta-row__next {
+  background: #eb374f;
+}
+
+.ob-cta-row__next:active {
+  opacity: 0.85;
+}
+
+.ob-cta-row__next--disabled {
+  background: #d4d4d4;
+  cursor: not-allowed;
+}
+
+.ob-cta-row__next--disabled:active {
+  opacity: 1;
+}
+
 /* Back button: Figma top 106px from screen top → 53px from ob-screen top, left 35px */
 .ob-back {
   position: absolute;
@@ -236,7 +286,9 @@
 }
 
 @keyframes ob-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Loading title: Figma top 398px → 345px, centered */
