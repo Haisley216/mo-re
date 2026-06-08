@@ -6,6 +6,12 @@
   flex-shrink: 0;
 }
 
+@media (max-width: 480px) {
+  .home-indicator {
+    display: none;
+  }
+}
+
 .home-indicator__bar {
   width: 152px;
   height: 5px;

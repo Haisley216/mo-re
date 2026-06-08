@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm run *)",
       "mcp__figma-desktop__get_design_context",
-      "mcp__figma-desktop__get_screenshot"
+      "mcp__figma-desktop__get_screenshot",
+      "Bash(grep -E '\\\\.\\(tsx|ts|jsx|js|css\\)$')"
     ]
   }
 }

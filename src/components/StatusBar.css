@@ -7,6 +7,12 @@
   flex-shrink: 0;
 }
 
+@media (max-width: 480px) {
+  .status-bar {
+    display: none;
+  }
+}
+
 .status-bar__time {
   font-size: 15px;
   font-weight: 600;
