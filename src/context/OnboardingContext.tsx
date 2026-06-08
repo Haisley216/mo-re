@@ -17,29 +17,15 @@ interface OnboardingContextValue {
   complete: (data: OnboardingData) => void;
 }
 
-const STORAGE_KEY = 'mo_re_onboarding';
-
-function loadFromStorage(): { data: OnboardingData; completed: boolean } | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-}
-
 const OnboardingContext = createContext<OnboardingContextValue | null>(null);
 
 export function OnboardingProvider({ children }: { children: ReactNode }) {
-  const stored = loadFromStorage();
-  const [data, setData] = useState<OnboardingData | null>(stored?.data ?? null);
-  const [completed, setCompleted] = useState(stored?.completed ?? false);
+  const [data, setData] = useState<OnboardingData | null>(null);
+  const [completed, setCompleted] = useState(false);
 
   function complete(newData: OnboardingData) {
     setData(newData);
     setCompleted(true);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ data: newData, completed: true }));
   }
 
   return (

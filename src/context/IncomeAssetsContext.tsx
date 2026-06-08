@@ -18,9 +18,6 @@ interface IncomeAssetsContextValue {
   deleteRow: (label: string) => void;
 }
 
-const STORAGE_KEY = 'mo_re_income_assets';
-const ONBOARDING_KEY = 'mo_re_onboarding';
-
 export function buildInitialRows(data: OnboardingData): AssetRow[] {
   const rows: AssetRow[] = [];
   if (data.earnedIncome > 0)
@@ -34,41 +31,13 @@ export function buildInitialRows(data: OnboardingData): AssetRow[] {
   return rows;
 }
 
-function loadRows(): AssetRow[] {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
-
-    // No saved rows — try to seed from onboarding data (handles app reload after onboarding)
-    const onboardingRaw = localStorage.getItem(ONBOARDING_KEY);
-    if (onboardingRaw) {
-      const stored = JSON.parse(onboardingRaw);
-      if (stored?.data) {
-        const seeded = buildInitialRows(stored.data);
-        if (seeded.length > 0) {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(seeded));
-          return seeded;
-        }
-      }
-    }
-    return [];
-  } catch {
-    return [];
-  }
-}
-
-function persist(rows: AssetRow[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(rows));
-}
-
 const IncomeAssetsContext = createContext<IncomeAssetsContextValue | null>(null);
 
 export function IncomeAssetsProvider({ children }: { children: ReactNode }) {
-  const [rows, setRows] = useState<AssetRow[]>(loadRows);
+  const [rows, setRows] = useState<AssetRow[]>([]);
 
   function update(next: AssetRow[]) {
     setRows(next);
-    persist(next);
   }
 
   return (
