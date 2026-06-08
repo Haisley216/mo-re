@@ -87,7 +87,7 @@ export function OnboardingPage() {
     return (
       <div className="phone-frame">
         <StatusBar />
-        <div className="ob-screen">
+        <div className="ob-screen ob-screen--loading">
           <div className="ob-loader" />
           <p className="ob-loading-title">
             입력한 정보를 바탕으로<br />이번 달 소득인정액을 예상했어요
@@ -107,8 +107,12 @@ export function OnboardingPage() {
       <div className="phone-frame">
         <StatusBar />
         <div className="ob-screen">
-          <h2 className="ob-title">{'수급 기준 파악을 위해\n몇 가지 정보를 입력해주세요'}</h2>
-          <button type="button" className="ob-cta" onClick={() => setStep(2)}>다음</button>
+          <div className="ob-body">
+            <h2 className="ob-title">{'수급 기준 파악을 위해\n몇 가지 정보를 입력해주세요'}</h2>
+          </div>
+          <div className="ob-footer">
+            <button type="button" className="ob-cta" onClick={() => setStep(2)}>다음</button>
+          </div>
         </div>
         <HomeIndicator />
       </div>
@@ -125,28 +129,32 @@ export function OnboardingPage() {
           <button type="button" className="ob-back" onClick={() => setStep(1)} aria-label="뒤로 가기">
             <ChevronLeftIcon />
           </button>
-          <h2 className="ob-title">가구원 수를 선택해주세요</h2>
-          <div className="ob-options">
-            {HOUSEHOLD_OPTIONS.map((opt, i) => (
-              <button
-                key={opt}
-                type="button"
-                className={`ob-option${householdSize === i + 1 ? ' ob-option--selected' : ''}`}
-                onClick={() => setHouseholdSize(i + 1)}
-              >
-                {opt}
-              </button>
-            ))}
+          <div className="ob-body">
+            <h2 className="ob-title">가구원 수를 선택해주세요</h2>
+            <div className="ob-options">
+              {HOUSEHOLD_OPTIONS.map((opt, i) => (
+                <button
+                  key={opt}
+                  type="button"
+                  className={`ob-option${householdSize === i + 1 ? ' ob-option--selected' : ''}`}
+                  onClick={() => setHouseholdSize(i + 1)}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
           </div>
-          <Dots activeIndex={0} />
-          <button
-            type="button"
-            className={`ob-cta${disabled ? ' ob-cta--disabled' : ''}`}
-            disabled={disabled}
-            onClick={() => setStep(3)}
-          >
-            다음
-          </button>
+          <div className="ob-footer">
+            <Dots activeIndex={0} />
+            <button
+              type="button"
+              className={`ob-cta${disabled ? ' ob-cta--disabled' : ''}`}
+              disabled={disabled}
+              onClick={() => setStep(3)}
+            >
+              다음
+            </button>
+          </div>
         </div>
         <HomeIndicator />
       </div>
@@ -163,28 +171,32 @@ export function OnboardingPage() {
           <button type="button" className="ob-back" onClick={() => setStep(2)} aria-label="뒤로 가기">
             <ChevronLeftIcon />
           </button>
-          <h2 className="ob-title">거주 지역을 선택해주세요</h2>
-          <div className="ob-options">
-            {REGION_OPTIONS.map((opt) => (
-              <button
-                key={opt}
-                type="button"
-                className={`ob-option${region === opt ? ' ob-option--selected' : ''}`}
-                onClick={() => setRegion(opt)}
-              >
-                {opt}
-              </button>
-            ))}
+          <div className="ob-body">
+            <h2 className="ob-title">거주 지역을 선택해주세요</h2>
+            <div className="ob-options">
+              {REGION_OPTIONS.map((opt) => (
+                <button
+                  key={opt}
+                  type="button"
+                  className={`ob-option${region === opt ? ' ob-option--selected' : ''}`}
+                  onClick={() => setRegion(opt)}
+                >
+                  {opt}
+                </button>
+              ))}
+            </div>
           </div>
-          <Dots activeIndex={1} />
-          <button
-            type="button"
-            className={`ob-cta${disabled ? ' ob-cta--disabled' : ''}`}
-            disabled={disabled}
-            onClick={() => setStep(4)}
-          >
-            다음
-          </button>
+          <div className="ob-footer">
+            <Dots activeIndex={1} />
+            <button
+              type="button"
+              className={`ob-cta${disabled ? ' ob-cta--disabled' : ''}`}
+              disabled={disabled}
+              onClick={() => setStep(4)}
+            >
+              다음
+            </button>
+          </div>
         </div>
         <HomeIndicator />
       </div>
@@ -201,25 +213,29 @@ export function OnboardingPage() {
           <button type="button" className="ob-back" onClick={() => setStep(3)} aria-label="뒤로 가기">
             <ChevronLeftIcon />
           </button>
-          <h2 className="ob-title">만 나이를 입력해주세요</h2>
-          <input
-            className="ob-input ob-input--no-sub"
-            type="text"
-            inputMode="numeric"
-            placeholder="입력해주세요"
-            value={age}
-            onChange={(e) => setAge(e.target.value.replace(/[^0-9]/g, ''))}
-            autoFocus
-          />
-          <Dots activeIndex={2} />
-          <button
-            type="button"
-            className={`ob-cta${disabled ? ' ob-cta--disabled' : ''}`}
-            disabled={disabled}
-            onClick={() => setStep(5)}
-          >
-            다음
-          </button>
+          <div className="ob-body">
+            <h2 className="ob-title">만 나이를 입력해주세요</h2>
+            <input
+              className="ob-input"
+              type="text"
+              inputMode="numeric"
+              placeholder="입력해주세요"
+              value={age}
+              onChange={(e) => setAge(e.target.value.replace(/[^0-9]/g, ''))}
+              autoFocus
+            />
+          </div>
+          <div className="ob-footer">
+            <Dots activeIndex={2} />
+            <button
+              type="button"
+              className={`ob-cta${disabled ? ' ob-cta--disabled' : ''}`}
+              disabled={disabled}
+              onClick={() => setStep(5)}
+            >
+              다음
+            </button>
+          </div>
         </div>
         <HomeIndicator />
       </div>
@@ -273,35 +289,39 @@ export function OnboardingPage() {
         <button type="button" className="ob-back" onClick={() => setStep((s) => s - 1)} aria-label="뒤로 가기">
           <ChevronLeftIcon />
         </button>
-        <h2 className="ob-title">{current.title}</h2>
-        <p className="ob-subtitle">{current.subtitle}</p>
-        <input
-          key={step}
-          className="ob-input"
-          type="text"
-          inputMode="numeric"
-          placeholder="입력해주세요"
-          value={formatAmount(current.value)}
-          onChange={(e) => handleAmountChange(current.setter, e.target.value)}
-          autoFocus
-        />
-        <Dots activeIndex={current.dotIndex} />
-        <div className="ob-cta-row">
-          <button
-            type="button"
-            className="ob-cta-row__skip"
-            onClick={() => { current.setter(0); setStep((s) => s + 1); }}
-          >
-            해당 없음
-          </button>
-          <button
-            type="button"
-            className={`ob-cta-row__next${nextDisabled ? ' ob-cta-row__next--disabled' : ''}`}
-            disabled={nextDisabled}
-            onClick={() => setStep((s) => s + 1)}
-          >
-            {nextLabel}
-          </button>
+        <div className="ob-body">
+          <h2 className="ob-title">{current.title}</h2>
+          <p className="ob-subtitle">{current.subtitle}</p>
+          <input
+            key={step}
+            className="ob-input"
+            type="text"
+            inputMode="numeric"
+            placeholder="입력해주세요"
+            value={formatAmount(current.value)}
+            onChange={(e) => handleAmountChange(current.setter, e.target.value)}
+            autoFocus
+          />
+        </div>
+        <div className="ob-footer">
+          <Dots activeIndex={current.dotIndex} />
+          <div className="ob-cta-row">
+            <button
+              type="button"
+              className="ob-cta-row__skip"
+              onClick={() => { current.setter(0); setStep((s) => s + 1); }}
+            >
+              해당 없음
+            </button>
+            <button
+              type="button"
+              className={`ob-cta-row__next${nextDisabled ? ' ob-cta-row__next--disabled' : ''}`}
+              disabled={nextDisabled}
+              onClick={() => setStep((s) => s + 1)}
+            >
+              {nextLabel}
+            </button>
+          </div>
         </div>
       </div>
       <HomeIndicator />

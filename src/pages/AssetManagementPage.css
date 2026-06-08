@@ -284,8 +284,8 @@
 
 .asset-page__composition-row {
   display: grid;
-  grid-template-columns: 68px 76px 88px 1fr;
-  column-gap: 8px;
+  grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr);
+  column-gap: 6px;
   font-size: 13px;
   font-weight: 500;
   align-items: center;
@@ -294,6 +294,8 @@
 
 .asset-page__composition-row span {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .asset-page__composition-row span:nth-child(3) {

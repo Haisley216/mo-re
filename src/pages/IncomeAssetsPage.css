@@ -215,36 +215,34 @@
   line-height: normal;
 }
 
-/* Description — Figma: top 80px (36 + ~20px title + 24px gap) */
+/* Description */
 .bs2__desc {
   font-size: 18px;
   font-weight: 500;
   color: #000;
   line-height: 24px;
   margin: 24px 37px 0;
-  width: 256px;
   white-space: pre-line;
 }
 
-/* Note (edit only) — Figma: top 138px (desc ends ~128px + 10px gap) */
+/* Note (edit only) */
 .bs2__note {
   font-size: 15px;
   font-weight: 500;
   color: #767676;
   line-height: 20px;
   margin: 10px 37px 0;
-  width: 287px;
 }
 
-/* Amount input field — Figma: top 148px (add) / top 181px (edit w/ note) */
+/* Amount input field */
 .bs2__field {
   display: flex;
   align-items: center;
   background: #f9f9f9;
   border-radius: 6px;
   height: 52px;
-  width: 287px;
-  margin: 20px 0 0 37px;
+  width: calc(100% - 74px);
+  margin: 20px 37px 0;
   padding: 0 16px;
 }
 
@@ -278,12 +276,12 @@
   margin-left: 6px;
 }
 
-/* Single 완료 button (add mode) — 287px wide, left-aligned with field */
+/* Single 완료 button (add mode) */
 .bs2__btn-single {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 287px;
+  width: calc(100% - 74px);
   height: 50px;
   background: #eb374f;
   border-radius: 6px;
@@ -293,7 +291,7 @@
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
-  margin: 30px 0 0 37px;
+  margin: 30px 37px 0;
 }
 
 .bs2__btn-single:active {
@@ -304,8 +302,8 @@
 .bs2__actions {
   display: flex;
   gap: 13px;
-  width: 287px;
-  margin: 30px 0 0 37px;
+  width: calc(100% - 74px);
+  margin: 30px 37px 0;
 }
 
 /* 항목 삭제 (gray) */
