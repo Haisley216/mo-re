@@ -307,3 +307,96 @@
   line-height: 28px;
   text-align: center;
 }
+
+/* ── Mobile overrides (max-width: 480px) ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .ob-welcome__body {
+    padding: 0 24px;
+  }
+
+  .ob-welcome__title {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 16px;
+    word-break: keep-all;
+  }
+
+  .ob-welcome__sub {
+    font-size: 14px;
+    line-height: 22px;
+    word-break: keep-all;
+  }
+
+  .ob-welcome__cta {
+    height: 50px !important;
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .ob-btn {
+    font-size: 16px;
+  }
+
+  .ob-body {
+    padding: 0 24px;
+  }
+
+  .ob-footer {
+    padding: 0 24px 20px;
+    gap: 12px;
+  }
+
+  .ob-title {
+    font-size: 19px;
+    line-height: 28px;
+    margin-top: 44px;
+    margin-bottom: 14px;
+    word-break: keep-all;
+  }
+
+  .ob-subtitle {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 14px;
+    word-break: keep-all;
+  }
+
+  .ob-options {
+    gap: 8px;
+  }
+
+  .ob-option {
+    height: 48px;
+    font-size: 16px;
+    padding-left: 20px;
+  }
+
+  .ob-input {
+    height: 48px;
+    font-size: 16px;
+    padding: 0 20px;
+  }
+
+  .ob-cta {
+    height: 50px;
+    font-size: 17px;
+  }
+
+  .ob-cta-row__skip,
+  .ob-cta-row__next {
+    height: 50px;
+    font-size: 17px;
+  }
+
+  .ob-loading-title {
+    font-size: 20px;
+    line-height: 30px;
+    word-break: keep-all;
+  }
+
+  .ob-loading-sub {
+    font-size: 14px;
+    line-height: 22px;
+    word-break: keep-all;
+  }
+}
