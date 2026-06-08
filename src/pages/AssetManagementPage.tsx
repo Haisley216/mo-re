@@ -45,7 +45,6 @@ export function AssetManagementPage() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [menuOpen]);
 
-  const report = monthData[selectedMonth];
   const maxChartHeight = 58;
 
   // Derived totals from shared IncomeAssetsContext
@@ -75,8 +74,39 @@ export function AssetManagementPage() {
     generalAssets * (4.17 / 100 / 12),
   );
 
-  const BENEFIT_THRESHOLD = 820_000;
+  const BENEFIT_THRESHOLDS: Record<number, number> = {
+    1: 820_556,
+    2: 1_343_773,
+    3: 1_714_892,
+    4: 2_078_316,
+    5: 2_418_150,
+    6: 2_737_905,
+  };
+  const householdSize = onboardingData?.householdSize ?? 1;
+  const BENEFIT_THRESHOLD = BENEFIT_THRESHOLDS[householdSize] ?? 820_556;
   const remaining = BENEFIT_THRESHOLD - totalIncome;
+
+  // 5월 리포트: 온보딩 입력값 기반 동적 계산
+  const prevMonthEarnedIncome = monthData['3'].composition.earnedIncome;
+  const earnedIncomeDiff = Math.round((earnedIncome - prevMonthEarnedIncome) / 10_000);
+  const mayReport = {
+    ...monthData['4'],
+    chartValueLabel: `${Math.round(totalIncome / 10_000)}만원`,
+    chartHeight: Math.max(1, Math.min(Math.round((totalIncome / 640_000) * maxChartHeight), maxChartHeight * 2)),
+    summary: earnedIncomeDiff >= 0
+      ? `4월보다 근로 소득이 약 ${Math.abs(earnedIncomeDiff)}만원 정도 증가했어요`
+      : `4월보다 근로 소득이 약 ${Math.abs(earnedIncomeDiff)}만원 정도 감소했어요`,
+    composition: {
+      earnedIncome,
+      earnedIncomeAssessment: Math.round(earnedIncome * 0.7 + otherIncome),
+      financialAssets,
+      financialConversion: Math.round(financialAssets * (6.26 / 100 / 12)),
+      generalAssets,
+      generalConversion: Math.round(generalAssets * (4.17 / 100 / 12)),
+    },
+  };
+
+  const report = selectedMonth === '4' ? mayReport : monthData[selectedMonth];
 
   return (
     <div className="phone-frame">
@@ -148,7 +178,7 @@ export function AssetManagementPage() {
             <p className="asset-page__hint" style={{ marginBottom: 14 }}>입력된 소득 및 재산 정보가 없어요</p>
           )}
 
-          <p className="asset-page__footnote">*생계급여 820,556원 기준</p>
+          <p className="asset-page__footnote">*생계급여 {BENEFIT_THRESHOLD.toLocaleString('ko-KR')}원 기준</p>
 
           <button
             type="button"
@@ -169,7 +199,7 @@ export function AssetManagementPage() {
           <div className="asset-page__chart" role="group" aria-label="월별 소득인정액 차트">
             <div className="asset-page__chart-bars">
               {monthOrder.map((month) => {
-                const mdata = monthData[month];
+                const mdata = month === '4' ? mayReport : monthData[month];
                 const isSelected = selectedMonth === month;
 
                 return (
