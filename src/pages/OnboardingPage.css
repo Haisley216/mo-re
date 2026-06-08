@@ -102,7 +102,7 @@
   line-height: 34px;
   color: #121212;
   white-space: pre-line;
-  margin-top: 68px;
+  margin-top: 60px;
   margin-bottom: 20px;
 }
 
@@ -118,9 +118,9 @@
 /* Back chevron — absolute so it overlaps body without affecting flow */
 .ob-back {
   position: absolute;
-  top: 20px;
+  top: 8px;
   left: 27px;
-  padding: 8px;
+  padding: 8px 8px 8px 6px;
   line-height: 0;
   z-index: 1;
 }
@@ -256,6 +256,15 @@
   opacity: 0.85;
 }
 
+.ob-cta-row__skip--disabled {
+  background: #e0e0e0;
+  cursor: not-allowed;
+}
+
+.ob-cta-row__skip--disabled:active {
+  opacity: 1;
+}
+
 .ob-cta-row__next {
   background: #eb374f;
 }
@@ -344,6 +353,10 @@
   .ob-footer {
     padding: 0 24px 20px;
     gap: 12px;
+  }
+
+  .ob-back {
+    top: 6px;
   }
 
   .ob-title {

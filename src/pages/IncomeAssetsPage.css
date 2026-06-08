@@ -22,6 +22,7 @@
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 8px;
+  word-break: keep-all;
 }
 
 .income-page__subtitle {
@@ -29,6 +30,7 @@
   font-weight: 500;
   color: #858585;
   line-height: 1.4;
+  word-break: keep-all;
 }
 
 .income-page__section {
@@ -352,4 +354,96 @@
 .bs2__btn-single.bs2__btn--disabled:active,
 .bs2__btn-confirm.bs2__btn--disabled:active {
   opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .income-page {
+    padding: 0 24px 40px;
+  }
+
+  .income-page__header {
+    margin-top: 24px;
+    margin-bottom: 20px;
+  }
+
+  .income-page__title {
+    font-size: 20px;
+  }
+
+  .income-page__subtitle {
+    font-size: 13px;
+  }
+
+  .income-page__section-title {
+    font-size: 16px;
+  }
+
+  .income-page__row {
+    font-size: 15px;
+    height: 40px;
+    padding: 0 20px;
+  }
+
+  .bs__section-title {
+    font-size: 17px;
+    padding: 14px 24px;
+  }
+
+  .bs__item {
+    padding: 8px 24px;
+  }
+
+  .bs__item-label {
+    font-size: 15px;
+  }
+
+  .bs__item-desc {
+    font-size: 13px;
+    word-break: keep-all;
+  }
+
+  .bs2__title {
+    font-size: 17px;
+    margin: 12px 24px 0;
+  }
+
+  .bs2__desc {
+    font-size: 15px;
+    margin: 18px 24px 0;
+    word-break: keep-all;
+  }
+
+  .bs2__note {
+    font-size: 13px;
+    margin: 8px 24px 0;
+    word-break: keep-all;
+  }
+
+  .bs2__field {
+    width: calc(100% - 48px);
+    margin: 16px 24px 0;
+  }
+
+  .bs2__field-input,
+  .bs2__field-unit {
+    font-size: 15px;
+  }
+
+  .bs2__btn-single {
+    width: calc(100% - 48px);
+    margin: 20px 24px 0;
+    font-size: 15px;
+    height: 44px;
+  }
+
+  .bs2__actions {
+    width: calc(100% - 48px);
+    margin: 20px 24px 0;
+  }
+
+  .bs2__btn-delete,
+  .bs2__btn-confirm {
+    font-size: 15px;
+    height: 44px;
+  }
 }

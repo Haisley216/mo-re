@@ -308,7 +308,8 @@ export function OnboardingPage() {
           <div className="ob-cta-row">
             <button
               type="button"
-              className="ob-cta-row__skip"
+              className={`ob-cta-row__skip${!nextDisabled ? ' ob-cta-row__skip--disabled' : ''}`}
+              disabled={!nextDisabled}
               onClick={() => { current.setter(0); setStep((s) => s + 1); }}
             >
               해당 없음

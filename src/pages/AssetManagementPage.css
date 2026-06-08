@@ -20,6 +20,7 @@
   font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
+  word-break: keep-all;
 }
 
 .asset-page__menu-btn {
@@ -78,6 +79,7 @@
   color: #858585;
   line-height: 1.4;
   margin-bottom: 15px;
+  word-break: keep-all;
 }
 
 .asset-page__highlight {
@@ -310,4 +312,49 @@
   height: 1px;
   background: #e0e0e0;
   margin: 8px 0;
+}
+
+@media (max-width: 480px) {
+  .asset-page {
+    padding: 0 24px 24px;
+  }
+
+  .asset-page__header {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .asset-page__title {
+    font-size: 20px;
+  }
+
+  .asset-page__month-label {
+    font-size: 15px;
+  }
+
+  .asset-page__amount {
+    font-size: 20px;
+  }
+
+  .asset-page__hint {
+    font-size: 13px;
+  }
+
+  .asset-page__breakdown li {
+    font-size: 15px;
+  }
+
+  .asset-page__section-title {
+    font-size: 16px;
+  }
+
+  .asset-page__report-title,
+  .asset-page__report-summary {
+    font-size: 13px;
+  }
+
+  .asset-page__cta {
+    font-size: 13px;
+    min-height: 58px;
+  }
 }
