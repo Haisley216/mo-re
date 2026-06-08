@@ -357,12 +357,13 @@
 
   .ob-back {
     top: 6px;
+    left: 14px;
   }
 
   .ob-title {
     font-size: 19px;
     line-height: 28px;
-    margin-top: 44px;
+    margin-top: 70px;
     margin-bottom: 14px;
     word-break: keep-all;
   }
