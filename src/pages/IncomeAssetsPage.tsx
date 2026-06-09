@@ -6,6 +6,7 @@ import { ChevronLeftIcon, PlusIcon } from '../components/Icons';
 import { useOnboarding } from '../context/OnboardingContext';
 import { buildInitialRows, useIncomeAssets } from '../context/IncomeAssetsContext';
 import type { AssetRow, ItemCategory } from '../context/IncomeAssetsContext';
+import mixpanel from '../lib/mixpanel';
 import './IncomeAssetsPage.css';
 
 // ── Item catalogue ────────────────────────────────────────────────────────
@@ -176,23 +177,27 @@ export function IncomeAssetsPage() {
   );
 
   function handleSelectItem(item: SheetItem) {
+    mixpanel.track('income_asset_item_selected', { label: item.label, category: item.category });
     setSheet({ mode: 'add', item });
   }
 
   function handleConfirmAdd(amount: number) {
     if (sheet?.mode !== 'add') return;
+    mixpanel.track('income_asset_item_added', { label: sheet.item.label, category: sheet.item.category, amount });
     addRow({ label: sheet.item.label, amount, category: sheet.item.category });
     setSheet(null);
   }
 
   function handleConfirmEdit(amount: number) {
     if (sheet?.mode !== 'edit') return;
+    mixpanel.track('income_asset_item_updated', { label: sheet.row.label, amount });
     updateAmount(sheet.row.label, amount);
     setSheet(null);
   }
 
   function handleDelete() {
     if (sheet?.mode !== 'edit') return;
+    mixpanel.track('income_asset_item_deleted', { label: sheet.row.label });
     deleteRow(sheet.row.label);
     setSheet(null);
   }
@@ -221,7 +226,7 @@ export function IncomeAssetsPage() {
                   key={row.label}
                   type="button"
                   className="income-page__row"
-                  onClick={() => setSheet({ mode: 'edit', row })}
+                  onClick={() => { mixpanel.track('income_asset_item_edit_opened', { label: row.label, category: row.category }); setSheet({ mode: 'edit', row }); }}
                 >
                   <span>{row.label}</span>
                   <span>{fmt(row.amount)}</span>
@@ -235,7 +240,7 @@ export function IncomeAssetsPage() {
           type="button"
           className="income-page__add-btn"
           aria-label="항목 추가"
-          onClick={() => setSheet({ mode: 'select' })}
+          onClick={() => { mixpanel.track('income_asset_add_opened'); setSheet({ mode: 'select' }); }}
         >
           <PlusIcon />
         </button>

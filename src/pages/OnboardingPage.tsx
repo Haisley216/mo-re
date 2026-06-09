@@ -4,6 +4,7 @@ import { StatusBar } from '../components/StatusBar';
 import { HomeIndicator } from '../components/HomeIndicator';
 import { ChevronLeftIcon } from '../components/Icons';
 import { useOnboarding } from '../context/OnboardingContext';
+import mixpanel from '../lib/mixpanel';
 import './OnboardingPage.css';
 
 const TOTAL_DOTS = 7;
@@ -73,7 +74,7 @@ export function OnboardingPage() {
               소득과 재산 정보를 바탕으로<br />이번 달 예상 수급 상태를 확인하고 관리해보세요
             </p>
           </div>
-          <button type="button" className="ob-btn ob-btn--primary ob-welcome__cta" onClick={() => setStep(1)}>
+          <button type="button" className="ob-btn ob-btn--primary ob-welcome__cta" onClick={() => { mixpanel.track('onboarding_started'); setStep(1); }}>
             시작하기
           </button>
         </div>
@@ -111,7 +112,7 @@ export function OnboardingPage() {
             <h2 className="ob-title">{'수급 기준 파악을 위해\n몇 가지 정보를 입력해주세요'}</h2>
           </div>
           <div className="ob-footer">
-            <button type="button" className="ob-cta" onClick={() => setStep(2)}>다음</button>
+            <button type="button" className="ob-cta" onClick={() => { mixpanel.track('onboarding_step_next', { step: 1, step_name: 'intro' }); setStep(2); }}>다음</button>
           </div>
         </div>
         <HomeIndicator />
@@ -137,7 +138,7 @@ export function OnboardingPage() {
                   key={opt}
                   type="button"
                   className={`ob-option${householdSize === i + 1 ? ' ob-option--selected' : ''}`}
-                  onClick={() => setHouseholdSize(i + 1)}
+                  onClick={() => { mixpanel.track('onboarding_option_selected', { field: 'household', value: opt }); setHouseholdSize(i + 1); }}
                 >
                   {opt}
                 </button>
@@ -150,7 +151,7 @@ export function OnboardingPage() {
               type="button"
               className={`ob-cta${disabled ? ' ob-cta--disabled' : ''}`}
               disabled={disabled}
-              onClick={() => setStep(3)}
+              onClick={() => { mixpanel.track('onboarding_step_next', { step: 2, step_name: 'household' }); setStep(3); }}
             >
               다음
             </button>
@@ -179,7 +180,7 @@ export function OnboardingPage() {
                   key={opt}
                   type="button"
                   className={`ob-option${region === opt ? ' ob-option--selected' : ''}`}
-                  onClick={() => setRegion(opt)}
+                  onClick={() => { mixpanel.track('onboarding_option_selected', { field: 'region', value: opt }); setRegion(opt); }}
                 >
                   {opt}
                 </button>
@@ -192,7 +193,7 @@ export function OnboardingPage() {
               type="button"
               className={`ob-cta${disabled ? ' ob-cta--disabled' : ''}`}
               disabled={disabled}
-              onClick={() => setStep(4)}
+              onClick={() => { mixpanel.track('onboarding_step_next', { step: 3, step_name: 'region' }); setStep(4); }}
             >
               다음
             </button>
@@ -231,7 +232,7 @@ export function OnboardingPage() {
               type="button"
               className={`ob-cta${disabled ? ' ob-cta--disabled' : ''}`}
               disabled={disabled}
-              onClick={() => setStep(5)}
+              onClick={() => { mixpanel.track('onboarding_step_next', { step: 4, step_name: 'age' }); setStep(5); }}
             >
               다음
             </button>
@@ -310,7 +311,7 @@ export function OnboardingPage() {
               type="button"
               className={`ob-cta-row__skip${!nextDisabled ? ' ob-cta-row__skip--disabled' : ''}`}
               disabled={!nextDisabled}
-              onClick={() => { current.setter(0); setStep((s) => s + 1); }}
+              onClick={() => { mixpanel.track('onboarding_item_skipped', { step, step_name: current.title }); current.setter(0); setStep((s) => s + 1); }}
             >
               해당 없음
             </button>
@@ -318,7 +319,14 @@ export function OnboardingPage() {
               type="button"
               className={`ob-cta-row__next${nextDisabled ? ' ob-cta-row__next--disabled' : ''}`}
               disabled={nextDisabled}
-              onClick={() => setStep((s) => s + 1)}
+              onClick={() => {
+                if (step === 8) {
+                  mixpanel.track('onboarding_completed');
+                } else {
+                  mixpanel.track('onboarding_step_next', { step, step_name: current.title });
+                }
+                setStep((s) => s + 1);
+              }}
             >
               {nextLabel}
             </button>

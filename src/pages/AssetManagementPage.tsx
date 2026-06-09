@@ -6,6 +6,7 @@ import { BankIcon, ChevronLeftIcon, HamburgerIcon, HouseIcon, WonIcon } from '..
 import { formatCurrency, monthData, monthOrder, type MonthKey } from '../data/monthlyData';
 import { buildInitialRows, useIncomeAssets } from '../context/IncomeAssetsContext';
 import { useOnboarding } from '../context/OnboardingContext';
+import mixpanel from '../lib/mixpanel';
 import './AssetManagementPage.css';
 
 const CURRENT_MONTH = new Date().getMonth() + 1;
@@ -183,7 +184,7 @@ export function AssetManagementPage() {
           <button
             type="button"
             className="asset-page__cta"
-            onClick={() => navigate('/income-assets')}
+            onClick={() => { mixpanel.track('asset_management_income_cta_clicked'); navigate('/income-assets'); }}
           >
             <span className="asset-page__cta-text">
               <span>지난 달 소득인정액을 바탕으로 예상한 값이에요.</span>
@@ -209,7 +210,7 @@ export function AssetManagementPage() {
                     className={`asset-page__chart-item${isSelected ? ' asset-page__chart-item--selected' : ''}`}
                     aria-pressed={isSelected}
                     aria-label={`${mdata.label} ${mdata.chartValueLabel}`}
-                    onClick={() => setSelectedMonth(month)}
+                    onClick={() => { mixpanel.track('chart_month_selected', { month: mdata.label }); setSelectedMonth(month); }}
                   >
                     <span className="asset-page__chart-value">{mdata.chartValueLabel}</span>
                     <span
